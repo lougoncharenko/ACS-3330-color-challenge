@@ -1,10 +1,8 @@
 import React from 'react'
 import GridSquare from '../GridSquare/GridSquare'
-
-// Represents a 10 x 18 grid of grid squares
+import './GridBoard.css'
 
 export default function GridBoard() {
-  // generates an array of 18 rows, each containing 10 GridSquares.
   const grid = []
   for (let row = 0; row < 18; row ++) {
     grid.push([])
