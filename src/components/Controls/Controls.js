@@ -1,27 +1,40 @@
 import React from 'react'
+import {useSelector, useDispatch} from 'react-redux'
+import {moveDown, moveLeft, moveRight, rotate} from '../../redux/gameSlice'
 import './Controls.css'
 
 export default function Controls(props) {
+  const { isRunning } = useSelector(state => state)
+  const dispatch = useDispatch()
   return (
   <div className="controls">
-    {/* left */}
-    <button className="control-button" onClick={(e) => {
-      // ...
+    
+    <button 
+    className="control-button" 
+    disabled={!isRunning}
+    onClick={(e) => {
+      dispatch(moveLeft())
     }}>Left</button>
 
-    {/* right */}
-    <button className="control-button" onClick={(e) => {
-      // ...
+    <button 
+    className="control-button" 
+    disabled={!isRunning}
+    onClick={(e) => {
+      dispatch(moveRight())
     }}>Right</button>
 
-    {/* rotate */}
-    <button className="control-button" onClick={(e) => {
-      // ...
+    <button 
+    className="control-button" 
+    disabled={!isRunning}
+    onClick={(e) => {
+      dispatch(rotate())
     }}>Rotate</button>
 
-    {/* down */}
-    <button className="control-button" onClick={(e) => {
-      // ...
+    <button 
+    className="control-button" 
+    disabled={!isRunning}
+    onClick={(e) => {
+      dispatch(moveDown())
     }}>Down</button>
 
   </div>
