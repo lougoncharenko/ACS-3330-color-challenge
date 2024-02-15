@@ -4,9 +4,8 @@ import { moveDown, moveLeft, moveRight, rotate } from "../../redux/gameSlice";
 import "./Controls.css";
 
 export default function Controls(props) {
-  const { isRunning, speed } = useSelector((state) => state);
-  const dispatch = useDispatch();
-  // Set up the game timer
+  const {isRunning, speed, gameOver} = useSelector((state) => state);
+  const dispatch = useDispatch();  // Set up the game timer
   const requestRef = useRef();
   const lastUpdateTimeRef = useRef(0);
   const progressTimeRef = useRef(0);
@@ -38,7 +37,7 @@ export default function Controls(props) {
     <div className="controls">
       <button
         className="control-button"
-        disabled={!isRunning}
+        disabled={!isRunning || gameOver}
         onClick={(e) => {
           dispatch(moveLeft());
         }}
@@ -48,7 +47,7 @@ export default function Controls(props) {
 
       <button
         className="control-button"
-        disabled={!isRunning}
+        disabled={!isRunning || gameOver}
         onClick={(e) => {
           dispatch(moveRight());
         }}
@@ -58,7 +57,7 @@ export default function Controls(props) {
 
       <button
         className="control-button"
-        disabled={!isRunning}
+        disabled={!isRunning || gameOver}
         onClick={(e) => {
           dispatch(rotate());
         }}
@@ -68,7 +67,7 @@ export default function Controls(props) {
 
       <button
         className="control-button"
-        disabled={!isRunning}
+        disabled={!isRunning || gameOver}
         onClick={(e) => {
           dispatch(moveDown());
         }}
